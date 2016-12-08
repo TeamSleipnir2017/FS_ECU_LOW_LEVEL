@@ -100,10 +100,14 @@ void TC0_Handler(void)
 		  CPCS: RC Compare Status                                                              */
 	/************************************************************************/
 	uint32_t tc_status_register = TC0->TC_CHANNEL[0].TC_SR;
+	if (tc_status_register & TC_SR_CPAS)
+	{
+		uart_transfer('a');
+	}
 	if (tc_status_register & TC_SR_COVFS)
 	{
-		
+		uart_transfer('o');
 	}
 	PIOC->PIO_SODR			= IGN1;
-	uart_transfer('q');
+	
 }

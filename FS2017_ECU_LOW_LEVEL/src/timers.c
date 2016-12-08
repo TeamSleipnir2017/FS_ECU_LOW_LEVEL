@@ -41,7 +41,7 @@ void timers_init(void)
 	CPCS: RC Compare
 	                                                                     */
 	/************************************************************************/
-	TC0->TC_CHANNEL[0].TC_IER = TC_IER_COVFS;
+	TC0->TC_CHANNEL[0].TC_IER = TC_IER_COVFS | TC_IER_CPAS;
 	
 	/************************************************************************/
 	/*  
@@ -55,7 +55,10 @@ void timers_init(void)
 	XC2 Clock selected: XC2                                                                  */
 	/************************************************************************/
 	/* TC Channel mode register (MCK / 2) */
-	TC0->TC_CHANNEL[0].TC_CMR = TC_CMR_TCCLKS_TIMER_CLOCK1;
+	TC0->TC_CHANNEL[0].TC_CMR = TC_CMR_TCCLKS_TIMER_CLOCK1 | TC_CMR_WAVE;
+	
+	/* Load Register A to interrupt after specific counts */
+	TC0->TC_CHANNEL[0].TC_RA = 420000000;
 	
 	/* TC channel control register, enable counter */
 	TC0->TC_CHANNEL[0].TC_CCR = TC_CCR_CLKEN | TC_CCR_SWTRG;
