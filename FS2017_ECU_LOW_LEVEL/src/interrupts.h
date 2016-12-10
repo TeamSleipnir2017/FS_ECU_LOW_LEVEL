@@ -12,6 +12,6 @@
 #include <asf.h>
 #include "global.h"
 
-
+void enable_interrupt_vector(uint32_t irqn, uint32_t priority);
 
 #endif /* INTERRUPTS_H_ */

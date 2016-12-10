@@ -31,15 +31,29 @@
 #include <asf.h>
 #include "global.h"
 
+void waste_of_time_delay(uint32_t delay)
+{
+	for (uint32_t i = 0; i < delay; i++)
+	{
+		for (uint32_t j = 0; j < 1978; j++)
+		{
+			__asm__("nop");
+		}
+	}
+}
+
+#define TEST ADC_CH0
+
 int main (void)
 {
+	
 	/* Initialize the SAM system. Using ASF */
 	sysclk_init();
 	board_init();
 	
 	/* Enable peripheral clock controller */
-	PMC->PMC_PCER0			= ID_PIOA;
-	PMC->PMC_PCER0			= ID_PIOC;
+	PMC->PMC_PCER0			= (1 << ID_PIOA);
+	PMC->PMC_PCER0			= (1 << ID_PIOC);
 	
 	/* Initialize ignition outputs */
 	ignition_init();
@@ -53,16 +67,37 @@ int main (void)
 	/* Initialize timer */
 	timers_init();
 	
+	/* Initialize ADC */
+	uart_print_string("Initialize ADC"); uart_new_line();
+	adc_init();
+	adc_turn_on_channel(TEST);
+	uart_print_string("Read ADC"); uart_new_line();
+	uint16_t read_adc = adc_read(TEST);
+// 	PMC->PMC_PCER1 = (1 << (ID_ADC-32));
+// 	
+// 	ADC->ADC_CR = ADC_CR_SWRST;
+// 	
+// 	ADC->ADC_MR = ADC_MR_TRANSFER(1) | ADC_MR_TRACKTIM(0) | ADC_MR_PRESCAL(1) | ADC_MR_STARTUP_SUT24;
+// 	
+// 	ADC->ADC_CHER = ADC_CHER_CH0;
+// 	
+	
+// 	ADC->ADC_CR = ADC_CR_START;
+// 	while(!(ADC->ADC_ISR & ADC_ISR_EOC0));
+// 	uint16_t read_adc = ADC->ADC_CDR[0];
+	uart_print_int(read_adc); uart_new_line();
+	
 	
 	// Enable ignition
 	PIOC->PIO_SODR			= IGN1;
 	// Disable ignition
 	PIOC->PIO_CODR			= IGN1;
 	
-	uart_transfer('t');
 	while (1)
 	{
-		
+		waste_of_time_delay(10000);
+		uint16_t read_adc = adc_read(TEST);
+		uart_print_int(read_adc);
 	}
 	
 		

@@ -15,6 +15,7 @@
 #include "interrupts.h"
 #include "uart.h"
 #include "timers.h"
+#include "ADC.h"
 
 #define ATSAM3X8E_MCK 84000000
 

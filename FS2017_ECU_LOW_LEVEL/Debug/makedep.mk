@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\ADC.c
+
 src\ASF\common\services\clock\sam3x\sysclk.c
 
 src\ASF\sam\drivers\pio\pio.c

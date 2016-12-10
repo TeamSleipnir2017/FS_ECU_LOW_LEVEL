@@ -1,4 +1,4 @@
-src/uart.d src/uart.o: ../src/uart.c ../src/uart.h ../src/global.h \
+src/ADC.d src/ADC.o: ../src/ADC.c ../src/ADC.h ../src/global.h \
  ../src/sensors.h ../src/asf.h ../src/ASF/sam/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\5.3.1\include\stddef.h \
  ../src/ASF/common/utils/parts.h \
@@ -130,9 +130,9 @@ src/uart.d src/uart.o: ../src/uart.c ../src/uart.h ../src/global.h \
  ../src/ASF/common/services/clock/sam3x/pll.h \
  ../src/ASF/sam/drivers/pmc/sleep.h \
  ../src/ASF/sam/drivers/pio/pio_handler.h ../src/ignition.h \
- ../src/interrupts.h ../src/timers.h ../src/ADC.h
+ ../src/interrupts.h ../src/uart.h ../src/timers.h
 
-../src/uart.h:
+../src/ADC.h:
 
 ../src/global.h:
 
@@ -412,6 +412,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 
 ../src/interrupts.h:
 
-../src/timers.h:
+../src/uart.h:
 
-../src/ADC.h:
+../src/timers.h:

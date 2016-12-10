@@ -482,6 +482,12 @@
     <None Include="src\ASF\common\services\clock\pll.h">
       <SubType>compile</SubType>
     </None>
+    <Compile Include="src\ADC.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ADC.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\ASF\common\services\clock\sam3x\sysclk.c">
       <SubType>compile</SubType>
     </Compile>

@@ -130,7 +130,8 @@ src/sensors.d src/sensors.o: ../src/sensors.c ../src/sensors.h \
  ../src/ASF/common/services/clock/sam3x/pll.h \
  ../src/ASF/sam/drivers/pmc/sleep.h \
  ../src/ASF/sam/drivers/pio/pio_handler.h ../src/global.h \
- ../src/ignition.h ../src/interrupts.h ../src/uart.h ../src/timers.h
+ ../src/ignition.h ../src/interrupts.h ../src/uart.h ../src/timers.h \
+ ../src/ADC.h
 
 ../src/sensors.h:
 
@@ -413,3 +414,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 ../src/uart.h:
 
 ../src/timers.h:
+
+../src/ADC.h:
