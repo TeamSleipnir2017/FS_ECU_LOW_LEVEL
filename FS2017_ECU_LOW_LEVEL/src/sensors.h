@@ -9,7 +9,7 @@
 #ifndef SENSORS_H_
 #define SENSORS_H_
 
-#define CRANKSIGNAL PIO_PA15
+
 
 #include <asf.h>
 #include "global.h"

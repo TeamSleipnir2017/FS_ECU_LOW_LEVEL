@@ -14,6 +14,8 @@ src\ASF\sam\drivers\pmc\pmc.c
 
 src\ASF\sam\drivers\pmc\sleep.c
 
+src\global.c
+
 src\ignition.c
 
 src\interrupts.c

@@ -37,7 +37,7 @@ void adc_turn_on_channel (uint16_t channel_number)
 }
 
 
-void adc_start ()
+void adc_start (void)
 {
 	/* Begin the ADC conversion (ADC control register)*/
 	ADC->ADC_CR = ADC_CR_START;

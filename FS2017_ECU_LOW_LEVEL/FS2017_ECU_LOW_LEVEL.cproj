@@ -530,6 +530,9 @@
     <None Include="src\config\conf_clock.h">
       <SubType>compile</SubType>
     </None>
+    <Compile Include="src\global.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\ignition.c">
       <SubType>compile</SubType>
     </Compile>

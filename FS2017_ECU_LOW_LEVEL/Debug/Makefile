@@ -87,6 +87,7 @@ C_SRCS +=  \
 ../src/ASF/sam/drivers/pio/pio_handler.c \
 ../src/ASF/sam/drivers/pmc/pmc.c \
 ../src/ASF/sam/drivers/pmc/sleep.c \
+../src/global.c \
 ../src/ignition.c \
 ../src/interrupts.c \
 ../src/sensors.c \
@@ -114,6 +115,7 @@ src/ASF/sam/drivers/pio/pio.o \
 src/ASF/sam/drivers/pio/pio_handler.o \
 src/ASF/sam/drivers/pmc/pmc.o \
 src/ASF/sam/drivers/pmc/sleep.o \
+src/global.o \
 src/ignition.o \
 src/interrupts.o \
 src/sensors.o \
@@ -134,6 +136,7 @@ src/ASF/sam/drivers/pio/pio.o \
 src/ASF/sam/drivers/pio/pio_handler.o \
 src/ASF/sam/drivers/pmc/pmc.o \
 src/ASF/sam/drivers/pmc/sleep.o \
+src/global.o \
 src/ignition.o \
 src/interrupts.o \
 src/sensors.o \
@@ -154,6 +157,7 @@ src/ASF/sam/drivers/pio/pio.d \
 src/ASF/sam/drivers/pio/pio_handler.d \
 src/ASF/sam/drivers/pmc/pmc.d \
 src/ASF/sam/drivers/pmc/sleep.d \
+src/global.d \
 src/ignition.d \
 src/interrupts.d \
 src/sensors.d \
@@ -174,6 +178,7 @@ src/ASF/sam/drivers/pio/pio.d \
 src/ASF/sam/drivers/pio/pio_handler.d \
 src/ASF/sam/drivers/pmc/pmc.d \
 src/ASF/sam/drivers/pmc/sleep.d \
+src/global.d \
 src/ignition.d \
 src/interrupts.d \
 src/sensors.d \
@@ -202,6 +207,8 @@ LINKER_SCRIPT_DEP+=  \
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

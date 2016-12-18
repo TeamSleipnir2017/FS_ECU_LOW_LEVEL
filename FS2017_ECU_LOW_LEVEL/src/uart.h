@@ -20,7 +20,7 @@
 void uart_init(void);
 void uart_transfer(uint8_t transmit);
 void uart_print_int(uint32_t data);
-void uart_new_line();
+void uart_new_line(void);
 void uart_print_string(char * data);
 
 #endif /* UART_H_ */

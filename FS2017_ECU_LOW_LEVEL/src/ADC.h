@@ -10,7 +10,7 @@
 #define ADC_H_
 
 #include "global.h"
-#include <asf.h>
+
 
 #define ADC_CH0 0
 #define ADC_CH1 1
@@ -33,7 +33,7 @@
 void adc_init(void); 
 void adc_turn_on_channel (uint16_t channel_number);
 void adc_interrupt_enable (uint32_t priority, uint16_t channel_number);
-void adc_start ();
+void adc_start (void);
 uint16_t adc_read(uint16_t channel_number);
 
 #endif /* ADC_H_ */

@@ -51,7 +51,7 @@ void uart_print_int(uint32_t data)
 	}
 	uart_new_line();
 }
-void uart_new_line()
+void uart_new_line(void)
 {
 	uart_transfer(10);
 }

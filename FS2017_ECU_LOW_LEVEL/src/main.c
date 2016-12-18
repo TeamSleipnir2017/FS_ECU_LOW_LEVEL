@@ -31,6 +31,8 @@
 #include <asf.h>
 #include "global.h"
 
+//extern volatile struct cylinder cyl[NR_OF_CYL];
+
 void waste_of_time_delay(uint32_t delay)
 {
 	for (uint32_t i = 0; i < delay; i++)
@@ -42,11 +44,10 @@ void waste_of_time_delay(uint32_t delay)
 	}
 }
 
-#define TEST ADC_CH0
+#define TEST ADC_CH11 // Pin A9 Arduino Due
 
 int main (void)
 {
-	
 	/* Initialize the SAM system. Using ASF */
 	sysclk_init();
 	board_init();
@@ -85,7 +86,7 @@ int main (void)
 // 	ADC->ADC_CR = ADC_CR_START;
 // 	while(!(ADC->ADC_ISR & ADC_ISR_EOC0));
 // 	uint16_t read_adc = ADC->ADC_CDR[0];
-	uart_print_int(read_adc); uart_new_line();
+/*	uart_print_int(read_adc); uart_new_line();*/
 	
 	
 	// Enable ignition
@@ -93,11 +94,24 @@ int main (void)
 	// Disable ignition
 	PIOC->PIO_CODR			= IGN1;
 	
+
+	cylinder_init();
+	uart_print_string("Start"); uart_new_line();
+	uart_print_string("Number 1: ");
+	uart_print_int(cylinder[0].IgnCntTimingOn); uart_new_line();
+	uart_print_string("Number 2: ");
+	uart_print_int(cylinder[0].InjCntTimingOff); uart_new_line();
+	uart_print_string("Start"); uart_new_line();
+	uart_print_string("Number 1: ");
+	uart_print_int(cylinder[1].IgnCntTimingOn); uart_new_line();
+	uart_print_string("Number 2: ");
+	uart_print_int(cylinder[1].InjCntTimingOff);
+	
 	while (1)
 	{
 		waste_of_time_delay(10000);
 		uint16_t read_adc = adc_read(TEST);
-		uart_print_int(read_adc);
+		//uart_print_int(read_adc);
 	}
 	
 		
@@ -105,8 +119,9 @@ int main (void)
 /* Crankshaft signal and Camshaft signal handler */
 void PIOA_Handler(void)
 {
+	uint32_t pio_status_register = PIOA->PIO_ISR;
 	/* Pio controller pin data status register */
-	if (PIOA->PIO_PDSR & CRANKSIGNAL)
+	if (PIOA->PIO_PDSR & CRANK_SIGNAL)
 	{
 		uart_transfer('a');
 		if (PIOA->PIO_PDSR & IGN1)
@@ -137,11 +152,11 @@ void TC0_Handler(void)
 	uint32_t tc_status_register = TC0->TC_CHANNEL[0].TC_SR;
 	if (tc_status_register & TC_SR_CPAS)
 	{
-		uart_transfer('a');
+		//uart_transfer('a');
 	}
 	if (tc_status_register & TC_SR_COVFS)
 	{
-		uart_transfer('o');
+		//uart_transfer('o');
 	}
 	PIOC->PIO_SODR			= IGN1;
 	
