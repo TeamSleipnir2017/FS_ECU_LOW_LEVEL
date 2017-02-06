@@ -60,20 +60,24 @@ int main (void)
 	ignition_init();
 	
 	/* Initialize crankshaft signal input */
-	cranksignal_init();
+	//cranksignal_init();
 	
 	/* Initialize UART */
 	uart_init();
-	
+	uart_print_string("Initialize UART"); uart_new_line();
 	/* Initialize timer */
 	timers_init();
 	
 	/* Initialize ADC */
 	uart_print_string("Initialize ADC"); uart_new_line();
-	adc_init();
-	adc_turn_on_channel(TEST);
-	uart_print_string("Read ADC"); uart_new_line();
-	uint16_t read_adc = adc_read(TEST);
+	adc_initialize();
+	
+	/* Initialize cylinder structs */
+	cylinder_init();
+	
+// 	adc_turn_on_channel(TEST);
+// 	uart_print_string("Read ADC"); uart_new_line();
+// 	uint16_t read_adc = adc_read(TEST);
 // 	PMC->PMC_PCER1 = (1 << (ID_ADC-32));
 // 	
 // 	ADC->ADC_CR = ADC_CR_SWRST;
@@ -95,22 +99,35 @@ int main (void)
 	PIOC->PIO_CODR			= IGN1;
 	
 
-	cylinder_init();
-	uart_print_string("Start"); uart_new_line();
-	uart_print_string("Number 1: ");
-	uart_print_int(cylinder[0].IgnCntTimingOn); uart_new_line();
-	uart_print_string("Number 2: ");
-	uart_print_int(cylinder[0].InjCntTimingOff); uart_new_line();
-	uart_print_string("Start"); uart_new_line();
-	uart_print_string("Number 1: ");
-	uart_print_int(cylinder[1].IgnCntTimingOn); uart_new_line();
-	uart_print_string("Number 2: ");
-	uart_print_int(cylinder[1].InjCntTimingOff);
 	
+// 	uart_print_string("Start"); uart_new_line();
+// 	uart_print_string("Number 1: ");
+// 	uart_print_int(cylinder[0].IgnCntTimingOn); uart_new_line();
+// 	uart_print_string("Number 2: ");
+// 	uart_print_int(cylinder[0].InjCntTimingOff); uart_new_line();
+// 	uart_print_string("Start"); uart_new_line();
+// 	uart_print_string("Number 1: ");
+// 	uart_print_int(cylinder[1].IgnCntTimingOn); uart_new_line();
+// 	uart_print_string("Number 2: ");
+// 	uart_print_int(cylinder[1].InjCntTimingOff);
+	
+	/* Test fyrir ADC */
+	uart_print_string("A"); uart_new_line();
+	uint8_t channel_number[NR_OF_ACTIVE_ADC_CHANNELS] = {0, 3, 7};
+	uart_print_string("B"); uart_new_line();
+	adc_turn_on_multiple_channels(channel_number, TRUE, 10);
+	uart_print_string("C"); uart_new_line();
+	adc_start();
+	uart_print_string("D"); uart_new_line();
 	while (1)
 	{
+		uart_print_string("Initialize ADC"); uart_new_line();
+		if (AdcFlag)
+		{
+			uart_print_string("Her");
+		}
 		waste_of_time_delay(10000);
-		uint16_t read_adc = adc_read(TEST);
+		//uint16_t read_adc = adc_read(TEST);
 		//uart_print_int(read_adc);
 	}
 	

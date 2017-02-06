@@ -63,5 +63,4 @@ void uart_print_string(char * data)
 	while(data[i] != 0 || i > 20)
 		uart_transfer(data[i++]);
 	uart_transfer(32); // space
-
 }

@@ -26,6 +26,8 @@
 #define OFF 0					// Define off state
 #define HIGH 1					// Define high state
 #define LOW 0					// Define low state
+#define TRUE 1		
+#define FALSE 0
 /* TODO: Read from EEPROM number of cylinders                           */
 #define NR_OF_CYL  4			// Number of cylinders
 
@@ -156,10 +158,13 @@ void engine_config_init(void);	// Initialize all variables to 0
 #define SPI_CHIP_SELECT PIO_PA28// UNKNOWN
 
 // Inter-integrated circuit (IIC) (Write and read from EEPROM)
-//#define  IIC_
+#define  IIC_SDA PIO_PB12		// UNKNOWN
+#define  IIC_SCL PIO_PB13		// UNKNOWN
 
-// UART
-// TODO: Finish
+// UART 1
+#define UART_RX1 PIO_PA10		// DUE D19
+#define UART_TX1 PIO_PA11		// DUE D18
+
 
 
 #endif /* GLOBAL_H_ */

@@ -30,10 +30,24 @@
 #define ADC_CH15 15
 // Channel 15 is temperature sensor
 
-void adc_init(void); 
-void adc_turn_on_channel (uint16_t channel_number);
-void adc_interrupt_enable (uint32_t priority, uint16_t channel_number);
-void adc_start (void);
-uint16_t adc_read(uint16_t channel_number);
+/* Define active ADC channels, used for interrupts */
+#define NR_OF_ACTIVE_ADC_CHANNELS 3
+
+/* Array for the ADC channel numbers */
+volatile uint8_t AdcChannels[NR_OF_ACTIVE_ADC_CHANNELS];
+
+/* Data array for the configured active ADC channels */
+volatile uint16_t AdcData[NR_OF_ACTIVE_ADC_CHANNELS];
+
+/* Global flag to indicate new results from interrupt */
+volatile uint8_t AdcFlag;
+
+void adc_initialize(void); 
+// void adc_init(void); 
+// void adc_turn_on_channel (uint16_t channel_number);
+// void adc_turn_on_multiple_channels (uint8_t channel_number[NR_OF_ACTIVE_ADC_CHANNELS], uint8_t enable_adc_interrupt, uint8_t adc_interrupt_priority);
+// void adc_interrupt_enable (uint32_t priority, uint16_t channel_number);
+// void adc_start (void);
+// uint16_t adc_read(uint16_t channel_number);
 
 #endif /* ADC_H_ */
